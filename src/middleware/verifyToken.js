@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
+import {JWT_SECRET} from "../../index.js";
 
-const JWT_SECRET=process.env.JWT_SECRET_KEY;
 
 export const verifyToken=(req,res,next)=>{
     try {

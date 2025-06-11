@@ -1,7 +1,7 @@
 import UserModel from '../model/user.model.js'
 import jwt from 'jsonwebtoken'
+import {JWT_SECRET} from "../../index.js";
 
-const JWT_SECRET=process.env.JWT_SECRET_KEY;
 
 const generateToken =async (userID) => {
     try {
