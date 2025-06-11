@@ -1,0 +1,13 @@
+import express from 'express';
+import {deleteUser, getAllusers, getSingleUser, updateUser, updateUserRole} from "../controller/user.controller.js";
+import {verifyToken} from "../middleware/verifyToken.js";
+
+const router = express.Router();
+
+router.get('/get-singleuser/:id',verifyToken,getSingleUser)
+router.get('/get-alluser',verifyToken,getAllusers)
+router.delete('/delete-user/:id',verifyToken,deleteUser)
+router.post('/update-user/:id',verifyToken,updateUser)
+router.post("/update-user-role/:id",updateUserRole)
+
+export default router;
