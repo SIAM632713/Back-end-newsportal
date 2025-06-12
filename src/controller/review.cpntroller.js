@@ -21,8 +21,8 @@ export const PostReview=async(req,res)=>{
         const reviews=await ReviewModel.find({articleID}).sort({updatedAt:-1})
 
         if(reviews.length > 0){
-            const totalRatting=reviews.reduce((accum,review)=>{accum+review.ratting,0})
-            const averageRating=totalRatting/reviews/length
+            const totalRatting=reviews.reduce((accum,review)=>accum+review.ratting,0)
+            const averageRating=totalRatting/reviews.length
 
             const Articledata=await ArticleModel.findById(articleID)
             if(Articledata){
@@ -35,5 +35,19 @@ export const PostReview=async(req,res)=>{
         res.status(200).json({message:"Reviews posted successfully"})
     }catch(err){
 
+    }
+}
+
+
+export const getAllReviews=async(req,res)=>{
+    const {userID}=req.params;
+    try {
+        const data=await ReviewModel.find({userID:userID}).sort({createdAt:-1})
+        if(data.length === 0){
+            return res.status(404).json({message:"No review found"})
+        }
+        res.status(200).json({message:"Reviews founded successfully",data:data})
+    }catch(err){
+        res.status(404).json({message:"No review found"})
     }
 }
