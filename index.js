@@ -30,10 +30,12 @@ main().then(()=>console.log("mongoDB connected")).catch(err => console.log(err))
 import authRoute from "./src/route/auth.route.js";
 import userRoute from "./src/route/user.route.js"
 import articleRoute from "./src/route/article.route.js"
+import stateRoute from "./src/route/state.route.js"
 
 app.use("/api/auth",authRoute)
 app.use("/api/user",userRoute)
 app.use("/api/article",articleRoute)
+app.use("/api/state",stateRoute)
 
 
 import uploadImage from "./src/utilitis/uploadImage.js"
