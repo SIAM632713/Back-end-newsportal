@@ -15,7 +15,7 @@ export const getSingleUser=async(req,res)=>{
 
 export const getAllusers=async(req,res)=>{
     try {
-        const user=await UserModel.find({},"email role").sort({createdAt:-1})
+        const user=await UserModel.find({}).sort({createdAt:-1})
         res.status(200).json({message:"User founded successfully",data:user})
     }catch(err){
         res.status(500).json({message:"Something went wrong"})
