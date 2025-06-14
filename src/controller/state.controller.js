@@ -1,9 +1,11 @@
 import UserModel from "../model/user.model.js";
 import ArticleModel from "../model/article.model.js";
+import ReviewModel from "../model/review.model.js";
 
 export const adminState=async(req,res)=>{
     try {
         const totalUser=await UserModel.countDocuments()
+        const totalReviews=await ReviewModel.countDocuments()
         const totalPostResult=await ArticleModel.aggregate([
             {
                 $group:{
@@ -34,6 +36,7 @@ export const adminState=async(req,res)=>{
         }))
         res.status(200).json({
             totalUser,
+            totalReviews,
             totalPostallTime,
             monthlyPosts
         })
