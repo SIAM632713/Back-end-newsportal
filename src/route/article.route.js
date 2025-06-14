@@ -2,7 +2,7 @@ import express from "express";
 import {
     createArticlepost,
     deleteArticle,
-    getAllArticles,
+    getAllArticles, getArticleQuery,
     getSingleArticle,
     updateArticle
 } from "../controller/article.controller.js";
@@ -12,6 +12,7 @@ const router = express.Router();
 
 router.post("/creat-post",verifyToken,verifyAdmin,createArticlepost)
 router.get("/getall-post",verifyToken,verifyAdmin,getAllArticles)
+router.get("/get-query",getArticleQuery)
 router.get("/getsingle-post/:id",verifyToken,verifyAdmin,getSingleArticle)
 router.post("/update-post/:id",verifyToken,verifyAdmin,updateArticle)
 router.delete("/delete-post/:id",verifyToken,verifyAdmin,deleteArticle)

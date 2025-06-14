@@ -43,6 +43,25 @@ export const getSingleArticle=async (req,res)=>{
     }
 }
 
+
+export const getArticleQuery=async (req,res)=>{
+    try {
+        const {category}=req.query;
+        const filter={}
+        if(category && category !== 'all'){
+            filter.category=category;
+        }
+
+        const totalArticle=await ArticleModel.countDocuments(filter);
+        const articleData=await ArticleModel.find(filter)
+        res.status(200).json({message:"Article found successfully.",data: {totalArticle,articleData}});
+    }catch(err){
+        console.log(err);
+        res.status(500).json({message:"Error getting article"});
+    }
+}
+
+
 export const getAllArticles=async(req,res)=>{
     try {
         const data=await ArticleModel.find({})
