@@ -8,14 +8,9 @@ export const PostReview=async(req,res)=>{
             return res.status(400).json({message:"Missing required parameters"});
         }
 
-        const existingReview=await ReviewModel.findOne({userID,articleID})
-        if(existingReview){
-            existingReview.comment=comment
-            await existingReview.save()
-        }else {
-            const review=new ReviewModel({comment,userID,articleID})
-            await review.save().sort({createdAt:-1})
-        }
+        const review=new ReviewModel({comment,userID,articleID})
+         await review.save()
+
         res.status(200).json({message:"Reviews posted successfully"})
     }catch(err){
 

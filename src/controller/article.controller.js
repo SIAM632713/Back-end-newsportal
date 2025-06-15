@@ -33,7 +33,7 @@ export const getSingleArticle=async (req,res)=>{
            return  res.status(404).json({message:"No article with this id"});
         }
 
-        const reviewData=await reviewModel.find({articleID:id});
+        const reviewData=await reviewModel.find({articleID:id}).populate("userID",' username')
         if(!reviewData){
             return res.status(404).json({message:"No article with this id"});
         }
