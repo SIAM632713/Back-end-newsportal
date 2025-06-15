@@ -7,7 +7,7 @@ export const createArticlepost=async (req,res)=>{
     try {
         const newPost=new ArticleModel({
             ...req.body,
-        })
+        }.sort({createdAt:-1}));
         const savePost=await newPost.save();
 
         const reviews=await ReviewModel.find({articleID:savePost._id});

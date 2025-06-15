@@ -11,9 +11,9 @@ import {verifyAdmin} from "../middleware/verifyAdmin.js";
 const router = express.Router();
 
 router.post("/creat-post",verifyToken,verifyAdmin,createArticlepost)
-router.get("/getall-post",verifyToken,verifyAdmin,getAllArticles)
+router.get("/getall-post",getAllArticles)
 router.get("/get-query",getArticleQuery)
-router.get("/getsingle-post/:id",verifyToken,verifyAdmin,getSingleArticle)
+router.get("/getsingle-post/:id",getSingleArticle)
 router.post("/update-post/:id",verifyToken,verifyAdmin,updateArticle)
 router.delete("/delete-post/:id",verifyToken,verifyAdmin,deleteArticle)
 

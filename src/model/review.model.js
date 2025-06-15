@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 const reviewSchema=mongoose.Schema({
     comment:{type:String,required:true},
-    ratting:{type:Number},
     userID:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
